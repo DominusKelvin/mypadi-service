@@ -9,6 +9,6 @@
  */
 
 module.exports.routes = {
-
-
+  "GET /": "home",
+  "POST /user/signup": "user/signup",
 };
