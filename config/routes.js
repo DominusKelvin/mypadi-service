@@ -11,4 +11,5 @@
 module.exports.routes = {
   "GET /": "home",
   "POST /user/signup": "user/signup",
+  "POST /user/signin": "user/signin",
 };

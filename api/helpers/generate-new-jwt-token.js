@@ -21,9 +21,7 @@ module.exports = {
       sub: inputs.subject,
       iss: "MyPadi Backend",
     };
-    const token = sails.helpers.issueJwt.with({
-      payload,
-    });
+    const token = sails.helpers.issueJwt(payload);
     return token;
   },
 };
