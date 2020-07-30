@@ -25,7 +25,7 @@ module.exports = {
 
   exits: {
     success: {
-      // 200
+      statusCode: 201,
       description: "New myPadi user created",
     },
     invalid: {
@@ -47,8 +47,6 @@ module.exports = {
         emailAddress: newEmailAddress,
         password: inputs.password,
       }).fetch();
-
-      sails.log(newUser);
 
       // Generate JWT token
       const token = await sails.helpers.generateNewJwtToken(newEmailAddress);
