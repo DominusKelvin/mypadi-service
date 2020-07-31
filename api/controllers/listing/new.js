@@ -41,7 +41,9 @@ module.exports = {
         name: inputs.name,
         type: inputs.type,
         address: inputs.address,
-        rent: inputs.rent
+        rent: inputs.rent,
+
+        lister: this.req.me.id
       }).fetch();
       // All done.
       return exits.success({

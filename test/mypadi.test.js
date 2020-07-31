@@ -109,4 +109,36 @@ describe('user routes', () => {
             .send(payload)
             .expect(400, done);
     })
+
+    it("A logged in user can create new listing", (done) => {
+        const payload = {
+            fullName: 'Kelvin Omereshone',
+            emailAddress: 'kelvinomereshone@gmail.com',
+            password: 'noblebright'
+        }
+        request(sails.hooks.http.app)
+            .post('/user/signup')
+            .send(payload)
+            .expect(201)
+            .then(res => {
+                const payload = {
+                    name: 'Mypadi Hostel',
+                    type: 'Bedsitter',
+                    address: 'No 1. Something street',
+                    rent: '100k per year'
+                }
+                request(sails.hooks.http.app)
+                    .post('/listing/new')
+                    .set('Authorization', `Bearer ${res.body.token}`)
+                    .send(payload)
+                    .expect(200)
+                    .then(res => {
+                        expect(res.body.message).toBe('New listing created successfully')
+                        expect(res.body.data).not.toBeUndefined()
+                        done();
+                    })
+                    .catch(err => done(err))
+            })
+            .catch(err => done(err))
+    })
 })

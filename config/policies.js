@@ -17,7 +17,6 @@ module.exports.policies = {
    ***************************************************************************/
 
   "*": "is-logged-in",
-  'listing/new': true,
   'home': true,
   "user/signup": true,
   "user/signin": true,
