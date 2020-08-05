@@ -63,11 +63,11 @@ module.exports = {
       sails.log.error(error);
       if (error.code == "E_UNIQUE") {
         return exits.badRequest({
-          error: "This email address already belongs to a myPadi user",
+          error: "This email address already belongs to a postman demo service user",
         });
       }
       return exits.invalid({
-        error: `${error.message}, problem creating a new myPadi user`,
+        error: `${error.message}, problem creating a new postman demo service user`,
       });
     }
   },

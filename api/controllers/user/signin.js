@@ -48,7 +48,7 @@ module.exports = {
       this.req.me = user;
 
       return exits.success({
-        message: `${user.emailAddress} has been logged in to myPadi`,
+        message: `${user.emailAddress} has been logged in to postman demo service`,
         data: user,
         token,
       });
