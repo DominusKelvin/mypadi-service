@@ -13,6 +13,6 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     // All done.
-    exits.success({ message: "You have reached myPadi web service" });
+    exits.success({ message: "You have reached postman test demo web service" });
   },
 };
