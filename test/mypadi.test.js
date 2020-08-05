@@ -41,7 +41,7 @@ describe('Home', () => {
             .get('/')
             .expect(200)
             .then(res => {
-                expect(res.body.message).toBe("You have reached myPadi web service")
+                expect(res.body.message).toBe("You have reached postman test demo web service")
                 done();
             }).catch(err => done(err))
     })
