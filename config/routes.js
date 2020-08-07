@@ -17,12 +17,12 @@ module.exports.routes = {
   "POST /listing/new": "listing/new",
 
   //Get all the listings of the logged in user
-  "GET /listing/me" : "listing/my-listings",
+  "GET /listing/me": "listing/my-listings",
 
   //Allow a logged in user to update his listing
-  "PUT /listing/me/update/:id" : "listing/update",
+  "PUT /listing/me/:id": "listing/update",
 
   //Let a user delete any of his listing
-  "DELETE /listing/me/delete/:id" : "listing/delete"
+  "DELETE /listing/me/:id": "listing/delete"
 
 };
