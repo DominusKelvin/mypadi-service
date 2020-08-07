@@ -20,4 +20,5 @@ module.exports.policies = {
   'home': true,
   "user/signup": true,
   "user/signin": true,
+  
 };
