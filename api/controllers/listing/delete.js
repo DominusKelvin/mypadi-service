@@ -8,20 +8,20 @@ module.exports = {
 
 
   inputs: {
-    id:{
+    id: {
       type: "string"
     }
   },
 
 
   exits: {
-    success:{
+    success: {
       description: "Successfully deleted"
     },
-    invalidRequest:{
+    invalidRequest: {
       description: "Invalid request"
     },
-    unauthorized:{
+    unauthorized: {
       description: "Not authorized"
     }
   },
@@ -29,25 +29,13 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
-      //First get the ID of the current login user
-      const userId = this.req.me.id;
-
-      //Find the property to be deleted
-      let listing = await Listing.findOne({id: inputs.id});
-      
-      //Now check if this listing belongs to this user
-      if(listing.lister != userId){
-        return exits.unauthorized({message: "You can\'t be serious. This is not your listing man. Joke intended"})
-      }
-
-      //Else delete the listing
-      const listingToBeDeleted = await Listing.destroy({id: inputs.id});
+      await Listing.destroy({ id: inputs.id });
       return exits.success({
         message: "Listing successfully deleted"
       })
-      
+
     } catch (error) {
-      
+
     }
   }
 };

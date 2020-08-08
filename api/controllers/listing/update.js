@@ -8,7 +8,7 @@ module.exports = {
 
 
   inputs: {
-    id:{
+    id: {
       type: "string",
       required: true
     },
@@ -16,15 +16,15 @@ module.exports = {
       type: "string",
       required: true
     },
-    type:{
+    type: {
       type: "string",
       required: true
     },
-    address:{
+    address: {
       type: "string",
       required: true
     },
-    rent:{
+    rent: {
       type: "string",
       required: true
     }
@@ -32,10 +32,10 @@ module.exports = {
 
 
   exits: {
-    success:{
+    success: {
       description: "Successful"
     },
-    notAuthorized:{
+    notAuthorized: {
       description: "Not authorized"
     }
   },
@@ -45,17 +45,9 @@ module.exports = {
     //First get the ID of the logged in user
     let userId = this.req.me.id;
 
-    //Find the particular listing to be updated
-    let listing = await Listing.findOne({id: inputs.id})
-
-    //Now check if the listing found above has same lister value as the userId
-    if(listing.lister != userId)
-    return exits.notAuthorized({
-      message: "You are not authorized to make this request",
-    })
 
     //So edit the listing since it belongs to this currecnt logged in user
-    const updatedListing = await Listing.update({id: inputs.id}).set({
+    const updatedListing = await Listing.update({ id: inputs.id }).set({
       name: inputs.name,
       address: inputs.address,
       type: inputs.type,
@@ -63,9 +55,9 @@ module.exports = {
     }).fetch();
     return exits.success({
       message: "Listing was successfully updated",
-      data:updatedListing
+      data: updatedListing
     })
-    
+
   }
 
 };
