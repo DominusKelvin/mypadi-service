@@ -1,7 +1,7 @@
 module.exports = async function (req, res, proceed) {
     try {
-        const transaction = await Listing.findOne({ id: req.params.id });
-        if (req.me.id == Listing.lister) {
+        const listing = await Listing.findOne({ id: req.params.id });
+        if (req.me.id == listing.lister) {
             proceed();
         } else {
             res
