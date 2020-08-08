@@ -42,17 +42,17 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    //First get the ID of the logged in user
-    let userId = this.req.me.id;
+    // //First get the ID of the logged in user
+    // let userId = this.req.me.id;
 
-    //Find the particular listing to be updated
-    let listing = await Listing.findOne({id: inputs.id})
+    // //Find the particular listing to be updated
+    // let listing = await Listing.findOne({id: inputs.id})
 
-    //Now check if the listing found above has same lister value as the userId
-    if(listing.lister != userId)
-    return exits.notAuthorized({
-      message: "You are not authorized to make this request",
-    })
+    // //Now check if the listing found above has same lister value as the userId
+    // if(listing.lister != userId)
+    // return exits.notAuthorized({
+    //   message: "You are not authorized to make this request",
+    // })
 
     //So edit the listing since it belongs to this currecnt logged in user
     const updatedListing = await Listing.update({id: inputs.id}).set({
