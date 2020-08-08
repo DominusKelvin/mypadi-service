@@ -20,7 +20,7 @@ module.exports.policies = {
   'home': true,
   "user/signup": true,
   "user/signin": true,
-  "listing/update": "is-listing-owner",
-  "listing/delete": "is-listing-owner"
+  "listing/update": ["is-logged-in", "is-listing-owner"],
+  "listing/delete": ["is-logged-in", "is-listing-owner"]
 
 };
