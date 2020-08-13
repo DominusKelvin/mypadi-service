@@ -9,7 +9,7 @@
  */
 
 module.exports.routes = {
-  "GET /": "home",
+  "GET /": "home/index",
   "POST /user/signup": "user/signup",
   "POST /user/signin": "user/signin",
 

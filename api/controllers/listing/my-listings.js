@@ -10,37 +10,38 @@ module.exports = {
 
 
   exits: {
-    success:{
+    success: {
       description: "Successful"
     },
-    badRequest:{
+    badRequest: {
       description: "Something went wrong"
     },
-    noListings:{
+    noListings: {
+      statusCode: 404,
       description: "No listings yet for this user"
     }
   },
 
 
-  fn: async function (inputs, exits) {
-   try {
-      //First get the ID of the current user
+  fn: async function (_, exits) {
+    try {
+      // First get the ID of the current user
       const userId = this.req.me.id;
 
       //Find all the listings that belongs to this user
-      const listings = await Listing.find({lister: userId})
+      const listings = await Listing.find({ lister: userId })
 
       //Check if the user has any listings
-      if(!listings){
-        return exits.noListings({message: "You currently have no listings"})
+      if (!listings) {
+        return exits.noListings({ message: "You currently have no listings" })
       }
       return exits.success({
         message: "There are all your listings",
         data: listings
       })
-   } catch (error) {
-     
-   }
+    } catch (error) {
+
+    }
 
   }
 
