@@ -17,7 +17,7 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (_, exits) {
 
     return exits.success({ message: "You have reached myPadi web service" });
 
