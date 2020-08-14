@@ -17,10 +17,11 @@ module.exports.policies = {
    ***************************************************************************/
 
   "*": "is-logged-in",
-  'home': true,
+  "home/index": true,
   "user/signup": true,
-  "user/signin": true,
-  "listing/update": "is-listing-owner",
-  "listing/delete": "is-listing-owner"
+  "user/signin": "can-signin",
+  "user/confirm": true,
+  "listing/update": ["is-logged-in", "is-listing-owner"],
+  "listing/delete": ["is-logged-in", "is-listing-owner"]
 
 };

@@ -8,7 +8,7 @@ module.exports = {
 
 
   inputs: {
-    id:{
+    id: {
       type: "string",
       required: true
     },
@@ -16,15 +16,15 @@ module.exports = {
       type: "string",
       required: true
     },
-    type:{
+    type: {
       type: "string",
       required: true
     },
-    address:{
+    address: {
       type: "string",
       required: true
     },
-    rent:{
+    rent: {
       type: "string",
       required: true
     }
@@ -32,10 +32,10 @@ module.exports = {
 
 
   exits: {
-    success:{
+    success: {
       description: "Successful"
     },
-    notAuthorized:{
+    notAuthorized: {
       description: "Not authorized"
     }
   },
@@ -55,7 +55,7 @@ module.exports = {
     // })
 
     //So edit the listing since it belongs to this currecnt logged in user
-    const updatedListing = await Listing.update({id: inputs.id}).set({
+    const updatedListing = await Listing.update({ id: inputs.id }).set({
       name: inputs.name,
       address: inputs.address,
       type: inputs.type,
@@ -63,9 +63,9 @@ module.exports = {
     }).fetch();
     return exits.success({
       message: "Listing was successfully updated",
-      data:updatedListing
+      data: updatedListing
     })
-    
+
   }
 
 };

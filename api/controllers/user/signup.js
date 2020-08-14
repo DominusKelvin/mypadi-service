@@ -41,23 +41,23 @@ module.exports = {
   fn: async function (inputs, exits) {
     try {
       const newEmailAddress = inputs.emailAddress.toLowerCase(); // be always defensive
+      const token = await sails.helpers.strings.random("url-friendly");
+      sails.log(token);
+
       let newUser = await User.create({
         id: sails.helpers.getUuid(),
         fullName: inputs.fullName,
         emailAddress: newEmailAddress,
         password: inputs.password,
+        emailProofToken: token,
+        emailProofTokenExpiresAt:
+          Date.now() + sails.config.custom.emailProofTokenTTL,
       }).fetch();
 
-      // Generate JWT token
-      const token = await sails.helpers.generateNewJwtToken(newEmailAddress);
-
-      // If code gets here. Everything was fine.
-      this.req.me = newUser;
+      sails.log(newUser);
 
       return exits.success({
-        message: `An account has been created for ${newUser.emailAddress} successfully`,
-        data: newUser,
-        token,
+        message: `An account has been created for ${newUser.emailAddress} successfully. Check your email to verify`,
       });
     } catch (error) {
       sails.log.error(error);

@@ -8,20 +8,20 @@ module.exports = {
 
 
   inputs: {
-    id:{
+    id: {
       type: "string"
     }
   },
 
 
   exits: {
-    success:{
+    success: {
       description: "Successfully deleted"
     },
-    invalidRequest:{
+    invalidRequest: {
       description: "Invalid request"
     },
-    unauthorized:{
+    unauthorized: {
       description: "Not authorized"
     }
   },
@@ -42,12 +42,13 @@ module.exports = {
 
       //Else delete the listing
       const listingToBeDeleted = await Listing.destroy({id: inputs.id});
+      await Listing.destroy({ id: inputs.id });
       return exits.success({
         message: "Listing successfully deleted"
       })
-      
+
     } catch (error) {
-      
+
     }
   }
 };

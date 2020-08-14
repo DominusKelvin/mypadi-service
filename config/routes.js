@@ -9,9 +9,10 @@
  */
 
 module.exports.routes = {
-  "GET /": "home",
+  "GET /": "home/index",
   "POST /user/signup": "user/signup",
   "POST /user/signin": "user/signin",
+  "GET /user/confirm": "user/confirm",
 
   // Listing
   "POST /listing/new": "listing/new",
