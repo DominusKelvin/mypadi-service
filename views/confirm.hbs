@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            padding: 10px 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .cta {
+            text-decoration: none;
+            background-color: #4caf50;
+            color: #fff !important;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        footer {
+            margin-top: 2rem;
+        }
+
+        p {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <h1 class="title">Welcome to myPadi, {{ name }}</h1>
+        <p class="subtitle">Glad to have you on board 🥳.</p>
+    </section>
+    <main>
+        <p>Please confirm your account by clicking the button below:</p>
+        <a class="cta" href="{{confirmLink}}" target="_blank">Confirm email</a>
+
+        <p>Once confirmed, you'll be able to log into myPadi web platform</p>
+    </main>
+    <footer>
+        <p>Achilles @ myPadi</p>
+    </footer>
+</body>
+
+</html>

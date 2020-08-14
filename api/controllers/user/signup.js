@@ -42,7 +42,6 @@ module.exports = {
     try {
       const newEmailAddress = inputs.emailAddress.toLowerCase(); // be always defensive
       const token = await sails.helpers.strings.random("url-friendly");
-      sails.log(token);
 
       let newUser = await User.create({
         id: sails.helpers.getUuid(),
@@ -54,7 +53,19 @@ module.exports = {
           Date.now() + sails.config.custom.emailProofTokenTTL,
       }).fetch();
 
-      sails.log(newUser);
+      const confirmLink = `${sails.config.custom.baseUrl}/user/confirm?token=${token}`;
+
+      const email = {
+        to: newUser.emailAddress,
+        subject: "Confirm Your myPadi account",
+        template: "confirm",
+        context: {
+          name: newUser.fullName.split(" ")[0],
+          confirmLink: confirmLink,
+        },
+      };
+
+      await sails.helpers.sendMail(email);
 
       return exits.success({
         message: `An account has been created for ${newUser.emailAddress} successfully. Check your email to verify`,
