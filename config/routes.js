@@ -9,21 +9,23 @@
  */
 
 module.exports.routes = {
-  "GET /": "home/index",
-  "POST /user/signup": "user/signup",
-  "POST /user/signin": "user/signin",
-  "GET /user/confirm": "user/confirm",
+  'GET /': 'home/index',
+  'POST /user/signup': 'user/signup',
+  'POST /user/signin': 'user/signin',
+  'GET /user/confirm': 'user/confirm',
+  'POST /user/forgot-password': 'user/forgot-password',
+  'POST /user/reset-password': 'user/reset-password',
 
   // Listing
-  "POST /listing/new": "listing/new",
+  'POST /listing/new': 'listing/new',
 
   //Get all the listings of the logged in user
-  "GET /listing/me": "listing/my-listings",
+  'GET /listing/me': 'listing/my-listings',
 
   //Allow a logged in user to update his listing
-  "PUT /listing/me/:id": "listing/update",
+  'PUT /listing/me/:id': 'listing/update',
 
   //Let a user delete any of his listing
-  "DELETE /listing/me/:id": "listing/delete"
+  'DELETE /listing/me/:id': 'listing/delete'
 
 };
